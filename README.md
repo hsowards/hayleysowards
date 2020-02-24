@@ -1,16 +1,13 @@
-# Hugo Goa Demo
+# Hayley Sowards' Personal Website
 
 ## About
 
-This site demonstrates the use of the [Hugo Goa Theme](https://github.com/shenoybr/hugo-goa) by [@shenoybr](https://github.com/shenoybr).
+This is a personal website I've created for myself in preparation for my transition to a PhD program. My plans for this website include hosting my CV, bibliography, presentations, and a blog that I hope to get in the swing of working on eventually!
 
-## Usage
+## How did I do this?
 
-* Install [Hugo](gohugo.io)
-* git clone https://github.com/shenoybr/hugo-goa-demo
-* Run `hugo server -w -v` from the root directory
-* Site will be visible at `localhost:1313`
+This website was created using the guidance of [Yihui Xie's book](https://bookdown.org/yihui/blogdown/) and the R package [blogdown](https://github.com/rstudio/blogdown)
 
-## License
+## Theme
 
-Licensed under the [MIT](https://opensource.org/licenses/MIT) License. See the [LICENSE](https://raw.githubusercontent.com/shenoybr/hugo-goa-demo/master/LICENSE) file for more details.
+I used the [Hugo Goa Theme](https://github.com/shenoybr/hugo-goa) by [@shenoybr](https://github.com/shenoybr) for this website.
