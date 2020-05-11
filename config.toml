@@ -1,6 +1,6 @@
 ## Basic Configuration
 
-baseurl = "https://shenoybr.github.io/hugo-goa-demo/"
+baseurl = "https://hayleysowards.com"
 builddrafts = false
 canonifyurls = false
 languageCode = "en-US"
@@ -9,8 +9,8 @@ contentdir = "content"
 layoutdir = "layouts"
 publishdir = "public"
 
-author = "Erlich Bachman"
-title = "Erlich Bachman"
+author = "Hayley Sowards"
+title = "Hayley Sowards"
 
 theme = "hugo-goa"
 
@@ -60,7 +60,7 @@ displayrssicon = true
     weight = 200
     url = "/about/"
 [[menu.main]]
-    name = "coderag"
-    identifier = "coderag"
+    name = "cv"
+    identifier = "cv"
     weight = 300
-    url = "/coderag/"
+    url = "/cv/"
