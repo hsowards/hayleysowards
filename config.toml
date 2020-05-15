@@ -10,7 +10,7 @@ layoutdir = "layouts"
 publishdir = "public"
 
 author = "Hayley Sowards"
-title = "Hayley Sowards"
+title = "A work in progress"
 
 theme = "hugo-goa"
 

@@ -1,8 +1,4 @@
 ---
-comments: false
-draft: false
-showpagemeta: false
-slug: ""
 title: Curriculum Vitae
 ---
 <object data="http://hayleysowards.com/cv.pdf" type="application/pdf" width="700px" height="700px">
