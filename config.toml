@@ -62,6 +62,6 @@ displayrssicon = true
     name = "cv"
     identifier = "cv"
     weight = 300
-    url = "/cv/"
+    url = "/cv/cv.pdf"
     
 ignoreFiles = ["\\.Rmarkdown$", "_files$", "_cache$"]
