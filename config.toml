@@ -21,7 +21,7 @@ enableRobotsTXT = true
 ## Site Settings
 [params]
 author = "Hayley Anne Sowards"
-intro = "NCI Fellow, PhD Applicant"
+intro = "Research Fellow, PhD Applicant"
 description = "work in progress"
 authorimage = "headshot.jpg"
 dateformat = "Jan 2, 2006"
@@ -48,11 +48,11 @@ toc = true
 displayrssicon = true
 
 ## Main Menu
-[[menu.main]]
-    name = "blog"
-    weight = 100
-    identifier = "blog"
-    url = "/blog/"
+#[[menu.main]]
+    #name = "blog"
+    #weight = 100
+    #identifier = "blog"
+    #url = "/blog/"
 [[menu.main]]
     name = "about"
     identifier = "about"
