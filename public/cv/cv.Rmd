@@ -1,0 +1,18 @@
+---
+name: Hayley Sowards
+date: "`r format(Sys.time(), '%B, %Y')`"
+www: hayleysowards.com
+github: hsowards
+linkedin: hayleysowards19
+twitter: HayleyASowards
+headcolor: 414141
+docname: CV/Resume
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+```
+
+

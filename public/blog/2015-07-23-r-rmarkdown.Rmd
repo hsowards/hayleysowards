@@ -1,5 +1,5 @@
 ---
-title: "Hello R Markdown"
+title: "Maps"
 author: "Frida Gomam"
 date: 2015-07-23T21:13:14-05:00
 categories: ["R"]
@@ -8,30 +8,61 @@ tags: ["R Markdown", "plot", "regression"]
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
+library(tidyverse)
+library(osmdata)
 ```
 
 # R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
-fit <- lm(dist ~ speed, data = cars)
-fit
+```{r}
+getbb("Phoenix United States")
+
+streets <- getbb("Phoenix United States") %>% 
+  opq() %>% 
+  add_osm_feature(key = "highway",
+                  value = c("motorway", "primary")) %>% 
+  osmdata_sf()
 ```
 
 # Including Plots
 
-You can also embed plots. See Figure \@ref(fig:pie) for example:
+```{r}
+small_streets <- getbb("Phoenix United States")%>%
+  opq()%>%
+  add_osm_feature(key = "highway", 
+                  value = c("secondary", "tertiary")) %>%
+  osmdata_sf()
 
-```{r pie, fig.cap='A fancy pie chart.', tidy=FALSE}
-par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c('Sky', 'Sunny side of pyramid', 'Shady side of pyramid'),
-  col = c('#0292D8', '#F7EA39', '#C4B632'),
-  init.angle = -50, border = NA
-)
+river <- getbb("Phoenix United States")%>%
+  opq()%>%
+  add_osm_feature(key = "waterway", value = "river") %>%
+  osmdata_sf()
 ```
+
+
+```{r}
+ggplot() +
+  geom_sf(data = streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "#ffbe7f",
+          size = .4,
+          alpha = .8) +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "#ffbe7f",          
+          size = .2,
+          alpha = .6) +
+  geom_sf(data = river$osm_lines,          
+          inherit.aes = FALSE,          
+          color = "#7fc0ff",          
+          size = .2,          
+          alpha = .5) +
+  coord_sf(xlim = c(-112.32, -111.93), #change coords
+           ylim = c(33.29, 33.92), #change coords
+           expand = FALSE) +
+  theme_void() +
+  theme(plot.background = element_rect(fill = "#282828"))
+```
+

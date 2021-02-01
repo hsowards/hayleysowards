@@ -40,12 +40,8 @@ email = "hayley.sowards@gmail.com"
 
 ## Extras
 [params.extra]
-copyright = "© 2016. Erlich Bachman. [Some Rights Reserved](http://creativecommons.org/licenses/by/3.0/)."
+copyright = "© 2020. Hayley Sowards. [Some Rights Reserved](http://creativecommons.org/licenses/by/3.0/)."
 poweredby = true
-highlightjs = true
-socialmarkup = true
-toc = true
-displayrssicon = true
 
 ## Main Menu
 #[[menu.main]]

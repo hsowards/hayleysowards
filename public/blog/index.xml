@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogs on Erlich Bachman</title>
-    <link>/hugo-goa-demo/blog/</link>
-    <description>Recent content in Blogs on Erlich Bachman</description>
+    <title>Blogs on Hayley Sowards</title>
+    <link>/blog/</link>
+    <description>Recent content in Blogs on Hayley Sowards</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 03 Oct 2016 16:59:13 -0400</lastBuildDate>
     
-	<atom:link href="/hugo-goa-demo/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hooli’s Hot New Hardware</title>
-      <link>/hugo-goa-demo/blog/third/</link>
+      <link>/blog/third/</link>
       <pubDate>Mon, 03 Oct 2016 16:59:13 -0400</pubDate>
       
-      <guid>/hugo-goa-demo/blog/third/</guid>
+      <guid>/blog/third/</guid>
       <description>Note: This article originally appeared in CodeRag.
 When Hooli acquired Endframe, no one could wait to see what the tech giant would do with the revolutionary, middle-out compression technology. The wait is over: In a savvy pivot, Hooli took the software and created their newest hardware: the Hooli/Endframe Box. While initially conceived as a consumer-facing platform, the Endframe technology has been repurposed to “make the world a better place through secure, high-capacity enterprise data storage servers utilizing middle-out compression technology.</description>
     </item>
     
     <item>
       <title>Gavin Belson</title>
-      <link>/hugo-goa-demo/blog/first/</link>
+      <link>/blog/first/</link>
       <pubDate>Sun, 02 Oct 2016 15:59:13 -0400</pubDate>
       
-      <guid>/hugo-goa-demo/blog/first/</guid>
+      <guid>/blog/first/</guid>
       <description>Note: This article originally appeared in CodeRag.
 Gavin Belson’s name has long been synonymous with innovation—but beyond his work at Hooli, do we even know the man behind the rampant success? In a Code/Rag exclusive, Belson revealed to us 10 things about himself that aren’t common knowledge.
  He’s a nature fanatic! “It’s important to me that Hooli has an effective recycling program, and a personal passion of mine is donating to elephant sanctuaries.</description>
@@ -34,23 +34,21 @@ Gavin Belson’s name has long been synonymous with innovation—but beyond his 
     
     <item>
       <title>Belson Back on Top</title>
-      <link>/hugo-goa-demo/blog/second/</link>
+      <link>/blog/second/</link>
       <pubDate>Sat, 01 Oct 2016 16:59:13 -0400</pubDate>
       
-      <guid>/hugo-goa-demo/blog/second/</guid>
+      <guid>/blog/second/</guid>
       <description>Note: This post originally appeared in CodeRag
 Gavin Belson’s brilliant leadership is unstoppable. While allegedly taking a personal hiatus from day-to-day operations at Hooli, Belson couldn’t resist brokering a blockbuster deal between Hooli and Maleant Data Systems, deploying Hooli’s innovative new Hooli/Endframe Box. The multi-year deal brings handsome margins for Hooli and can easily be a template to apply across the entire Fortune 1000. An inside source tells me that, no surprise, the board was no longer satisfied to let Belson fade into the background.</description>
     </item>
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>/hugo-goa-demo/blog/2015-07-23-r-rmarkdown/</link>
+      <title>Maps</title>
+      <link>/blog/2015-07-23-r-rmarkdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>/hugo-goa-demo/blog/2015-07-23-r-rmarkdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+      <guid>/blog/2015-07-23-r-rmarkdown/</guid>
+      <description>R Markdown getbb(&amp;quot;Phoenix United States&amp;quot;) ## min max ## x -112.32403 -111.92552 ## y 33.29037 33.91838 streets &amp;lt;- getbb(&amp;quot;Phoenix United States&amp;quot;) %&amp;gt;% opq() %&amp;gt;% add_osm_feature(key = &amp;quot;highway&amp;quot;, value = c(&amp;quot;motorway&amp;quot;, &amp;quot;primary&amp;quot;)) %&amp;gt;% osmdata_sf()  Including Plots small_streets &amp;lt;- getbb(&amp;quot;Phoenix United States&amp;quot;)%&amp;gt;% opq()%&amp;gt;% add_osm_feature(key = &amp;quot;highway&amp;quot;, value = c(&amp;quot;secondary&amp;quot;, &amp;quot;tertiary&amp;quot;)) %&amp;gt;% osmdata_sf() river &amp;lt;- getbb(&amp;quot;Phoenix United States&amp;quot;)%&amp;gt;% opq()%&amp;gt;% add_osm_feature(key = &amp;quot;waterway&amp;quot;, value = &amp;quot;river&amp;quot;) %&amp;gt;% osmdata_sf() ggplot() + geom_sf(data = streets$osm_lines, inherit.</description>
     </item>
     
   </channel>

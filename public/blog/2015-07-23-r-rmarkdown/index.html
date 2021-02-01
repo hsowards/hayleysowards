@@ -10,10 +10,10 @@
 <meta name="description" content="Simple minimalist theme">
 <meta name="keywords" content="minimalist,blog,goa,hugo,developer">
 
-<base href="/hugo-goa-demo/">
+<base href="/">
 
 <title>
-  Erlich Bachman - Hello R Markdown 
+  Hayley Sowards - Maps 
 </title>
 
 <meta name="generator" content="Hugo 0.62.2" />
@@ -25,8 +25,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400|Roboto+Slab:400,700|Roboto:300,300i,400,400i,500,500i,700,700i">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-<link rel="stylesheet" href="/hugo-goa-demo/css/main.css">
-<link rel="stylesheet" href="/hugo-goa-demo/css/custom.css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/custom.css">
 
 
 
@@ -44,7 +44,7 @@
 
 
 <header class="row text-left title">
-  <h1 class="title">Hello R Markdown</h1>
+  <h1 class="title">Maps</h1>
 </header>
 <section id="category-pane" class="row meta">
   
@@ -57,7 +57,7 @@
       —
       
       
-      <a class="meta" href="/hugo-goa-demo/categories/r">R</a>
+      <a class="meta" href="/categories/r">R</a>
       
       
       
@@ -73,42 +73,51 @@
 
 <div id="r-markdown" class="section level1">
 <h1>R Markdown</h1>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932</code></pre>
+<pre class="r"><code>getbb(&quot;Phoenix United States&quot;)
+##          min        max
+## x -112.32403 -111.92552
+## y   33.29037   33.91838
+
+streets &lt;- getbb(&quot;Phoenix United States&quot;) %&gt;% 
+  opq() %&gt;% 
+  add_osm_feature(key = &quot;highway&quot;,
+                  value = c(&quot;motorway&quot;, &quot;primary&quot;)) %&gt;% 
+  osmdata_sf()</code></pre>
 </div>
 <div id="including-plots" class="section level1">
 <h1>Including Plots</h1>
-<p>You can also embed plots. See Figure <a href="#fig:pie">1</a> for example:</p>
-<pre class="r"><code>par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&#39;Sky&#39;, &#39;Sunny side of pyramid&#39;, &#39;Shady side of pyramid&#39;),
-  col = c(&#39;#0292D8&#39;, &#39;#F7EA39&#39;, &#39;#C4B632&#39;),
-  init.angle = -50, border = NA
-)</code></pre>
-<div class="figure"><span id="fig:pie"></span>
-<img src="/hugo-goa-demo/blog/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png" alt="A fancy pie chart." width="672" />
-<p class="caption">
-Figure 1: A fancy pie chart.
-</p>
-</div>
+<pre class="r"><code>small_streets &lt;- getbb(&quot;Phoenix United States&quot;)%&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;highway&quot;, 
+                  value = c(&quot;secondary&quot;, &quot;tertiary&quot;)) %&gt;%
+  osmdata_sf()
+
+river &lt;- getbb(&quot;Phoenix United States&quot;)%&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;waterway&quot;, value = &quot;river&quot;) %&gt;%
+  osmdata_sf()</code></pre>
+<pre class="r"><code>ggplot() +
+  geom_sf(data = streets$osm_lines,
+          inherit.aes = FALSE,
+          color = &quot;#ffbe7f&quot;,
+          size = .4,
+          alpha = .8) +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = &quot;#ffbe7f&quot;,          
+          size = .2,
+          alpha = .6) +
+  geom_sf(data = river$osm_lines,          
+          inherit.aes = FALSE,          
+          color = &quot;#7fc0ff&quot;,          
+          size = .2,          
+          alpha = .5) +
+  coord_sf(xlim = c(-112.32, -111.93), #change coords
+           ylim = c(33.29, 33.92), #change coords
+           expand = FALSE) +
+  theme_void() +
+  theme(plot.background = element_rect(fill = &quot;#282828&quot;))</code></pre>
+<p><img src="/blog/2015-07-23-r-rmarkdown_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 
   </div>
@@ -123,11 +132,11 @@ Figure 1: A fancy pie chart.
       TAGS:
       
       
-      <a class="meta" href="/hugo-goa-demo/tags/plot">PLOT</a>, 
+      <a class="meta" href="/tags/plot">PLOT</a>, 
       
-      <a class="meta" href="/hugo-goa-demo/tags/r-markdown">R MARKDOWN</a>, 
+      <a class="meta" href="/tags/r-markdown">R MARKDOWN</a>, 
       
-      <a class="meta" href="/hugo-goa-demo/tags/regression">REGRESSION</a>
+      <a class="meta" href="/tags/regression">REGRESSION</a>
       
       
       
@@ -166,13 +175,13 @@ Figure 1: A fancy pie chart.
   
   
   
-  <span><a class="menu-item" href="/hugo-goa-demo/blog">blog</a></span>
+  <span><a class="menu-item" href="/blog">blog</a></span>
   
   
-  <span><a class="menu-item" href="/hugo-goa-demo/blog/second/"> | next &gt;</a></span>
+  <span><a class="menu-item" href="/blog/second/"> | next &gt;</a></span>
   
   
-  <h4 class="text-center"><a class="menu-item" href="/hugo-goa-demo/">home</a></h4>
+  <h4 class="text-center"><a class="menu-item" href="/">home</a></h4>
 </section>
 
 

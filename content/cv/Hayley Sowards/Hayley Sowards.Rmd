@@ -1,0 +1,260 @@
+---
+name: Hayley
+surname: Sowards
+position: "Fellow at the National Cancer Institute, Department of Cancer Epidemiology and Genomics"
+phone: +1 952 270 8803
+www: hayleysowards.com
+email: "hayley.sowards@gmail.com"
+github: hsowards
+linkedin: hayleysowards19
+twitter: HayleyASowards
+date: "`r format(Sys.time(), '%B %Y')`"
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(tinytex)
+library(knitr)
+extrafont::loadfonts()
+```
+
+
+
+
+# Timeline Overview
+
+```{r}
+# All packages used below must be installed first
+library(devtools)
+library(lares)
+library(ggplot2)
+
+plot_timeline2 <- function(event, start, end = start + 1, label = NA, group = NA,
+                           title = "Curriculum Vitae Timeline", subtitle = "Antoine Soetewey",
+                           size = 7, colour = "orange", save = FALSE, subdir = NA) {
+  df <- data.frame(
+    Role = as.character(event), Place = as.character(label),
+    Start = lubridate::date(start), End = lubridate::date(end),
+    Type = group
+  )
+  cvlong <- data.frame(pos = rep(
+    as.numeric(rownames(df)),
+    2
+  ), name = rep(as.character(df$Role), 2), type = rep(factor(df$Type,
+    ordered = TRUE
+  ), 2), where = rep(
+    as.character(df$Place),
+    2
+  ), value = c(df$Start, df$End), label_pos = rep(df$Start +
+    floor((df$End - df$Start) / 2), 2))
+  maxdate <- max(df$End)
+  p <- ggplot(cvlong, aes(
+    x = value, y = reorder(name, -pos),
+    label = where, group = pos
+  )) + geom_vline(
+    xintercept = maxdate,
+    alpha = 0.8, linetype = "dotted"
+  ) + labs( x = NULL, y = NULL, colour = NULL) +
+    theme_lares2() + theme(panel.background = element_rect(
+      fill = "white",
+      colour = NA
+    ), axis.ticks = element_blank(), panel.grid.major.x = element_line(
+      size = 0.25,
+      colour = "grey80"
+    ))
+  if (!is.na(cvlong$type)[1] | length(unique(cvlong$type)) >
+    1) {
+    p <- p + geom_line(aes(color = type), size = size) +
+      facet_grid(type ~ ., scales = "free", space = "free") +
+      guides(colour = FALSE) +
+      scale_colour_hue()
+  }
+  else {
+    p <- p + geom_line(size = size, colour = colour)
+  }
+  p <- p + geom_label(aes(x = label_pos),
+    colour = "black",
+    size = 2, alpha = 0.7
+  )
+  if (save) {
+    file_name <- "cv_timeline.png"
+    if (!is.na(subdir)) {
+      dir.create(file.path(getwd(), subdir), recursive = T)
+      file_name <- paste(subdir, file_name, sep = "/")
+    }
+    p <- p + ggsave(file_name, width = 8, height = 6)
+    message(paste("Saved plot as", file_name))
+  }
+  return(p)
+}
+
+order <- c("Role", "Place", "Type", "Start", "End")
+today <- as.character(Sys.Date())
+
+
+### Edit from here ###
+cv <- data.frame(rbind(
+  c("BSc in Biology and Psychology", "ASU", "Academic", "2015-08-16", "2019-05-04"),
+  c("NCI Fellow", "NIH", "Research Experience", "2019-08-05", today),
+  c("Intern/Research Technician", "TGen", "Research Experience", "2018-06-10", "2019-07-26"),
+  c("Research Assistant", "ATP", "Research Experience", "2017-03-01", "2019-05-04"),
+  c("Research Assistant", "SPLAT", "Research Experience", "2016-08-16", "2018-08-01")
+))
+### Edit until here ###
+
+
+colnames(cv) <- order
+colour <- c("red", "blue")
+
+plot_timeline2(
+  event = cv$Role,
+  start = cv$Start,
+  end = cv$End,
+  label = cv$Place,
+  group = cv$Type,
+  save = FALSE,
+  subtitle = "Hayley Sowards" # replace with your name
+)
+```
+
+\setlength{\parskip}{1em}
+
+# Education
+2019 - B.S. Biology (Genetics, Cellular, and Developmental) and Psychology 
+- *Summa Cum Laude* 
+- Arizona State University, Tempe, AZ 
+  
+2015 - Lakeville North High School <br>
+	Lakeville, MN
+
+# Research Experience
+**Intramural Research Training Fellow at the NCI** August 2019 – Present
+Functional analysis of melanoma risk loci
+- Supervisors: Drs. Kevin Brown and Rebecca Hennessey
+- **Independent Research:** Fine-mapping and functional analysis of multiple causal variants at the 9p21.3 melanoma risk locus
+
+**Helios Scholar and Research Technician at TGen** June 2018 – July 2019
+
+  Early life stress and effects on DNA methylation
+
+  Supervisors: Drs. Matt Huentelman and Candace Lewis
+
+  **Independent Research:** Associations Between Corporal Punishment and DNA Methylation in Stress Genes
+
+**Research Assistant for the Arizona Twin Project** March 2017 – May 2019
+	Childhood resilience and risk factors
+	Supervisors: Drs. Kathryn Lemery-Chalfant, Mary Davis, and Leah Doane
+	**Independent Research:** Dynamic Characteristics of Parent-Child Interactions: Mediating Role in Relation Between Parental Catastrophizing and Child Chronic Pain
+
+**Research Assistant for the Shiota Psychophysiological Lab** August 2016 – August 2018
+	Adult attachment, positive emotions, and ingroup relations
+	Supervisor: Dr. Michelle Shiota
+
+**Special Research Student at the Mayo Clinic** December 2017 – May 2018
+	Identification of multiple myeloma candidate variants
+
+# Publications
+Lewis, C.R., Breitenstein, R. S., Henderson-Smith, A., Sowards, H. A., Piras, I. S., Huentelman, 
+M., Doane, L.D. & Lemery-Chalfant, K. (2019) Dopaminergic Gene Methylation is 
+Associated with Cognitive Performance in a Childhood Monozygotic Twin Study. 
+Epigenetics, DOI: 10.1080/15592294.2019.1583032
+
+Lewis, C.R., Sowards, H. A., Huentelman, M. & Lemery-Chalfant, K. (Under review) Early 
+Parental Warmth Shapes General Health and Immune Epigenetics in Middle Childhood.
+
+Lewis, C.R., Breitenstein, R. S., Henderson-Smith, A., Sowards, H. A., Huentelman, M., Doane, 
+L.D. & Lemery-Chalfant, K. (In Preparation) Epigenetic Consequences of Harsh 
+Parenting: NR3C1 and other HPA Gene Methylation Profiles in Middle Childhood.
+
+Sowards, H. A., Clifford, S., Doane, L. D., Davis, M., & Lemery-Chalfant, K. (In Preparation) Dynamic Characteristics of Parent-Child Interactions: Mediating Role in Relation Between Parental Catastrophizing and Child Chronic Pain.
+
+## Conference Abstracts
+Lewis, C.R., Breitenstein, R. S., Henderson-Smith, A., Sowards, H. A., Huentelman, M., Doane, 
+L.D. & Lemery-Chalfant, K. (2019). Epigenetic Consequences of Harsh 
+Parenting: NR3C1 and other HPA Gene Methylation Profiles in Middle Childhood, Behavioral Genetics Association, Stockholm, Sweden, June 26th - 29th.
+
+Lewis, C.R., Breitenstein, Sowards, H. A., Huentelman, M. & Lemery-Chalfant, K. (2019) 
+Early Parental Warmth Shapes General Health and Immune Epigenetics in Middle 
+Childhood, Society for Neuroscience, Chicago, IL, Oct 19th - 23rd.
+
+## Poster Presentations
+Sowards, H. A., Hennessey, R. C., Brown, K. B. (April 2020) Fine-mapping and functional 
+analysis of multiple causal variants at the 9p21.3 melanoma risk locus. NIH 
+Postbaccalaureate Poster Day, Bethesda, MD.
+
+Sowards, H. A., Lewis, C. R., Breitenstein, R. S., Henderson-Smith, A., Doane, L.D., Lemery-
+Chalfant, K., & Huentelman, M. (October 2018) Associations Between Corporal 
+Punishment and DNA Methylation in Stress Genes. AZBio Awards, Phoenix, AZ.
+
+Sowards, H. A., Lewis, C. R., Breitenstein, R. S., Henderson-Smith, A., Doane, L.D., Lemery-
+Chalfant, K., & Huentelman, M. (July 2018) Associations Between Corporal Punishment 
+and DNA Methylation in Stress Genes. Helios Scholars at TGen Research Symposium, Phoenix, AZ.
+
+Lewis, C. R., Henderson-Smith, A., Styles, R., Sowards H. A., Doane, L., Lemery-Chalfant, K., 
+Huentelman, M. (October 2018) KIBRA gene (WWC1) methylation is associated with 
+cognitive performance in childhood.  Poster #1918, Presented at the 68th Annual 
+Meeting of The American Society of Human Genetics (ASHG), San Diego, CA.
+
+# Oral Presentations
+“Associations Between Corporal Punishment and DNA Methylation in Stress Genes” (July 
+2018; $250) Helios Scholars at TGen Research Symposium, Phoenix, AZ.
+
+“Integrity in the Biosciences” (October 2018) Future Leader Presented by Helios at the 8th 
+Integrity Summit, Phoenix, AZ. 
+
+# Mentor Experience
+Helios Scholars: Paulyn Kwak and Hannah Weisman	 	          June 2019 – July 2019
+	Undergraduate Summer internship program at TGen
+
+# Teaching Experience
+Teaching Assistant: Physiological Psychology			    January 2019 – May 2019
+	Supervisor: Dr. Eevin Jennings
+Teaching Assistant: Psychology Writing Center	        	        August 2017 – December 2017
+	Supervisor: Dr. Carolyn Cavanaugh-Toft
+
+# Volunteer Experience
+Maryland Science Olympiad: February 2020
+North Star Tutoring: November 2019 – Present 
+Task Manager for the Arizona Psychology Undergraduate Research Conference (AZPURC): October 2018 – February 2019
+Sun Devil Safety Network Advisor: March 2016 – May 2019
+Southwest Center for HIV/AIDS: March 2017 – May 2017
+
+# Awards
+Cancer Research Training Award: 2019 – 2021
+College of Liberal Arts and Sciences Student Leader: 2018
+ASU Alumni Association Legacy Scholarship: 2017 & 2018 
+John W. Reich Prize in Applied Social Psychology: 2018
+Dean’s Scholarship: 2015 – 2019
+Dean’s List (> 3.5 GPA for semester): 2016 – 2019 
+
+# References
+**Dr. Kevin Brown**
+Senior Investigator
+National Cancer Institute
+Division of Cancer Epidemiology & Genetics
+Laboratory of Translational Genomics
+8717 Grovemont Cir
+Gaithersburg, MD 20887
+Phone: (240) 760-6463
+Email: brownkm2@nih.gov
+
+**Dr. Mary Davis**
+Professor and Associate Chair 
+Arizona State University
+Department of Psychology
+PO Box 871104
+Tempe, AZ 85287
+Phone: (480) 965-2057
+Email: mary.davis@asu.edu
+
+
+**Dr. Matt Huentelman**
+Professor
+Translational Genomics Research Institute
+Neurogenomics Division
+445 N 5th St
+Phoenix, AZ 85004
+Phone: (602) 343-8730	
+Email: mhuentelman@tgen.org
