@@ -10,7 +10,7 @@ layoutdir = "layouts"
 publishdir = "public"
 
 author = "Hayley Sowards"
-title = "A work in progress"
+title = "Research Fellow, PhD Applicant"
 
 theme = "hugo-goa"
 
@@ -22,7 +22,7 @@ enableRobotsTXT = true
 [params]
 author = "Hayley Anne Sowards"
 intro = "Research Fellow, PhD Applicant"
-description = "work in progress"
+description = "Seeking a Position in a Medical Genetics Program"
 authorimage = "headshot.jpg"
 dateformat = "Jan 2, 2006"
 
@@ -35,7 +35,6 @@ keywords = "minimalist,blog,goa,hugo,developer"
 [params.social]
 github = "hsowards"
 linkedin = "hayleysowards19"
-twitter = "HayleyASowards"
 email = "hayley.sowards@gmail.com"
 
 ## Extras
